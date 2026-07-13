@@ -57,54 +57,39 @@ def predict_churn(
 
 demo = gr.Interface(
     fn=predict_churn,
-
     inputs=[
-
         gr.Number(label="Credit Score", value=650),
-
         gr.Dropdown(
             ["France", "Germany", "Spain"],
-            label="Geography"
+            label="Geography",
+            value="France"
         ),
-
         gr.Number(label="Age", value=30),
-
         gr.Number(label="Tenure", value=5),
-
         gr.Number(label="Account Balance", value=10000),
-
         gr.Number(label="Number of Products", value=1),
-
         gr.Radio(
             ["Yes", "No"],
-            label="Has Credit Card?"
+            label="Has Credit Card?",
+            value="Yes"
         ),
-
         gr.Radio(
             ["Yes", "No"],
-            label="Is Active Member?"
+            label="Is Active Member?",
+            value="Yes"
         ),
-
         gr.Number(label="Estimated Salary", value=50000),
-
     ],
-
     outputs=[
-
         gr.Textbox(label="Prediction"),
-
         gr.Textbox(label="Probability of Churn"),
-
     ],
-
     title="🏦 Bank Customer Churn Prediction",
-
-    description="""
-Predict whether a customer is likely to churn based on
-their demographic and banking information.
-""",
-
-    allow_flagging="never"
+    description=(
+        "Predict whether a customer is likely to churn based on "
+        "their demographic and banking information."
+    ),
+    flagging_mode="never"
 )
 
 demo.launch()
